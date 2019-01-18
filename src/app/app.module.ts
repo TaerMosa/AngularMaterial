@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {CdkTreeModule} from '@angular/cdk/tree';
+import {FirstService} from './FirstService';
 import {MatCheckboxModule,
   MatButtonModule,
   MatInputModule,
@@ -42,6 +43,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { Child1Component } from './child1/child1.component';
 import { Child2Component } from './child2/child2.component';
+import { InputcompComponent } from './inputcomp/inputcomp.component';
+import { OutputcompComponent } from './outputcomp/outputcomp.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { Child2Component } from './child2/child2.component';
     HomeComponent,
     ExpPip,
     Child1Component,
-    Child2Component
+    Child2Component,
+    InputcompComponent,
+    OutputcompComponent
   ],
   imports: [
     FormsModule, ReactiveFormsModule,
@@ -91,7 +96,7 @@ import { Child2Component } from './child2/child2.component';
     MatPaginatorModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [FirstService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

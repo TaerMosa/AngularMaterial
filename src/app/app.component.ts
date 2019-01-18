@@ -1,6 +1,8 @@
 import { Component, PipeTransform, Pipe, OnInit } from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import { HttpClient } from '@angular/common/http';
+import { defineBase } from '@angular/core/src/render3';
+import { FirstService } from './FirstService';
 
 
 
@@ -9,16 +11,48 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
   title = 'Book store';
+  toChoice = 'Thaer';
   color: string;
+  url = 'http://echo.jsontest.com/key/value/one/two ';
   JB = 'https://www.johnbryce.co.il/sites/all/themes/bryce/logo.png';
   flag = false;
   name = ' ';
   namelist = ['dan', 'Gel'];
+  FirstName;
+  Personname;
+  animalList = [
+    {  
+      name : 'cow',
+      color : 'blue',
+      numOfLegs: 4
+    },
+    { 
+       name : 'bird',
+      color : 'white',
+      numOfLegs: 2
+    }
+  ];
+
   asyncdata = new Promise(( resolve, reject) => { setTimeout(() =>
-    resolve('asyncData'), 5000);
+    resolve('asyncData'), 7000);
 });
+
+ constructor(private firstserv: FirstService, http: HttpClient) {
+  http.get(this.url).subscribe(result => {
+    console.log(result);
+   });
+ }
+
+ ngOnInit(): void {
+  this.FirstName = this.firstserv.personName;
+  this.Personname = this.firstserv.person;
+}
+
+  setName() {
+    this.firstserv.ChangeName('Alex', 'Ram');
+  }
 
    onkeyup(val) {
     this.name = val;
@@ -40,3 +74,11 @@ export class ExpPip implements PipeTransform {
   }
 
 }
+/*
+constructor(http: HttpClient) {
+  http.get(this.url).subscribe(result => {
+      console.log(result);
+  });
+}
+
+*/

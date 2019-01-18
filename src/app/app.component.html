@@ -1,3 +1,13 @@
+<!--Service Example-->
+<div>after async pip:{{asyncdata | async}} </div>
+<h3>service Output From AppComponent:</h3>
+<br>
+<p>{{FirstName}}</p>
+<br>
+<p>{{Personname.name}}</p>
+<br>
+<button (click)="setName()">Click Me</button>
+<br>
 <h1>welcome to our {{title}}</h1>
 <app-header></app-header>
 <br>
@@ -34,19 +44,39 @@
   <li *ngFor="let x of namelist">{{x}}</li>
 </ul>
 <br>
+
+<br>
 <h2>pipes examples</h2><br>
 <div>after custome pip:{{2 | expon:10 }} </div>
 <div>after upper case pip:{{'thaermussa' | uppercase}} </div>
 <div>after lower case pip:{{'THAERMUSSA' | lowercase}} </div>
 <div>after date  pip:{{'01/15/2019' | date:'yMMMMEEEEd'}} </div>
 <div>after currency pip:{{123 | currency:'USD'}} </div>
-<div>after async pip:{{asyncdata | async}} </div>
+
 <br>
+<ul>
+    <li *ngFor="let animal of animalList; let i=index">
+      <h3>{{i}}</h3>
+      <h2>{{animal.name}}</h2>
+
+    </li>
+
+</ul>
+
+
 <h3>Components communications</h3>
+
 
 <app-child1 (changecolor)="UpdateColor($event)"></app-child1>
 <app-child2 [selected]="color"></app-child2>
+
 <br>
+<span [ngSwitch] = "toChoice">
+ <span *ngSwitchCase="'Eve'">Eve</span>
+ <span *ngSwitchCase="'Bob'">Bob</span>
+ <span *ngSwitchCase="'Moe'">Moe</span>
+ <span *ngSwitchDefault>other</span>
+</span>
 
 
 
